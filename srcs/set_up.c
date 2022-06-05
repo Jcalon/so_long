@@ -6,7 +6,7 @@
 /*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:23:32 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/03 17:27:32 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/05 13:22:35 by jcalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,25 @@ void	ft_win_dim(t_data *data, char **argv)
 
 static void	set_textures(t_data *data)
 {
-	char	*texture_path;
 	int		img_w;
 	int		img_h;
 
-	texture_path = "./textures/bonhomme.xpm";
-	data->img->player_up = mlx_xpm_file_to_image(data->mlx, texture_path, &img_w, &img_h);
-	data->img->player_down = mlx_xpm_file_to_image(data->mlx, texture_path, &img_w, &img_h);
-	data->img->player_left = mlx_xpm_file_to_image(data->mlx, texture_path, &img_w, &img_h);
-	data->img->player_right = mlx_xpm_file_to_image(data->mlx, texture_path, &img_w, &img_h);
-	texture_path = "./textures/ground.xpm";
-	data->img->background = mlx_xpm_file_to_image(data->mlx, texture_path, &img_w, &img_h);
+	data->img->player_up = mlx_xpm_file_to_image(data->mlx, "./textures/bonhomme.xpm", &img_w, &img_h);
+	data->img->player_down = mlx_xpm_file_to_image(data->mlx, "./textures/bonhommeback.xpm", &img_w, &img_h);
+	data->img->player_left = mlx_xpm_file_to_image(data->mlx, "./textures/bonhommeleft.xpm", &img_w, &img_h);
+	data->img->player_right = mlx_xpm_file_to_image(data->mlx, "./textures/bonhommeright.xpm", &img_w, &img_h);
+	data->img->background = mlx_xpm_file_to_image(data->mlx, "./textures/ground.xpm", &img_w, &img_h);
+	data->img->top = mlx_xpm_file_to_image(data->mlx, "./textures/topvoid.xpm", &img_w, &img_h);
+	data->img->bottom = mlx_xpm_file_to_image(data->mlx, "./textures/bottomvoid.xpm", &img_w, &img_h);
+	data->img->left = mlx_xpm_file_to_image(data->mlx, "./textures/leftvoid.xpm", &img_w, &img_h);
+	data->img->right = mlx_xpm_file_to_image(data->mlx, "./textures/rightvoid.xpm", &img_w, &img_h);
+	data->map->coin = mlx_xpm_file_to_image(data->mlx, "./textures/money.xpm", &img_w, &img_h);
+	data->map->home = mlx_xpm_file_to_image(data->mlx, "./textures/home.xpm", &img_w, &img_h);
+	data->map->hole = mlx_xpm_file_to_image(data->mlx, "./textures/void.xpm", &img_w, &img_h);
+	data->img->rtcorner = mlx_xpm_file_to_image(data->mlx, "./textures/toprightcorner.xpm", &img_w, &img_h);
+	data->img->ltcorner = mlx_xpm_file_to_image(data->mlx, "./textures/topleftcorner.xpm", &img_w, &img_h);
+	data->img->rbcorner = mlx_xpm_file_to_image(data->mlx, "./textures/bottomrightcorner.xpm", &img_w, &img_h);
+	data->img->lbcorner = mlx_xpm_file_to_image(data->mlx, "./textures/bottomleftcorner.xpm", &img_w, &img_h);
 }
 
 void	struct_init(t_data *data, t_map *map)
@@ -89,6 +97,7 @@ void	struct_init(t_data *data, t_map *map)
 	data->map = map;
 	data->img = img;
 	data->counter = 0;
+	data->animations = 0;
 	data->collected = 0;
 	data->map->money = 0;
 	set_textures(data);

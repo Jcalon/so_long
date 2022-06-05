@@ -6,7 +6,7 @@
 /*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:32:28 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/03 16:45:55 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/05 13:24:25 by jcalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,26 @@ static int ft_key(int keycode, t_data *data)
 		ft_move(data, 'x', RIGHT);
 	if (data->map->map[data->p_y][data->p_x] == 'E')
 		ft_end(data);
+	data->animations++;
 	return (0);
 }
 
+// static int animations(t_data *data)
+// {
+// 	if (data->animations >= 50000)
+// 		data->animations = 0;
+// 	data->animations++;
+// 	ft_bonhomme_anim(data);
+// 	return (0);
+// }
+
 static void	ft_render_next_frame(t_data *data)
 {
-	ft_put_background(data);
+	data->win = mlx_new_window(data->mlx, data->size_x, data->size_y, "./so_long");
 	ft_put_map(data);
 	mlx_hook(data->win, 17, 1L << 2, ft_end, data);
 	mlx_key_hook(data->win, ft_key, data);
+	// mlx_loop_hook(data->mlx, animations, data);
 }
 
 int	main(int argc, char *argv[])
@@ -55,7 +66,6 @@ int	main(int argc, char *argv[])
 	data.mlx = mlx_init();
 	struct_init(&data, &map);
 	parse_map(&data, argv, argc);
-	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y, "./so_long");
 	ft_render_next_frame(&data);
 	mlx_loop(data.mlx);
 	exit(EXIT_FAILURE);
