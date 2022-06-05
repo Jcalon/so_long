@@ -6,7 +6,7 @@
 #    By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 16:18:43 by jcalon            #+#    #+#              #
-#    Updated: 2022/06/03 15:04:07 by jcalon           ###   ########.fr        #
+#    Updated: 2022/06/05 18:43:26 by jcalon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS 	= srcs/main.c srcs/set_up.c srcs/parsing.c srcs/put_map.c srcs/move.c
 OBJS 	= ${SRCS:.c=.o}
 
 CC 		= gcc
-CFLAGS 	= -Wall -Wextra -Werror
+CFLAGS 	= -Wall -Wextra -Werror -fsanitize=address -O0 -g3
 
 INCLUDES = -I mlx_linux -I libft -I includes -I /usr/include
 

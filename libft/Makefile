@@ -6,7 +6,7 @@
 #    By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/02 01:28:06 by crazyd            #+#    #+#              #
-#    Updated: 2022/05/30 13:34:31 by jcalon           ###   ########.fr        #
+#    Updated: 2022/06/05 19:05:22 by jcalon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRCS = ft_bzero.c		\
 		ft_print_conv.c	\
 		ft_print_conv_2.c \
 		get_next_line.c	\
-		ft_strcpy.c
+		ft_strcpy.c		\
+		ft_cmp.c
 
 SRCSB = ft_lstnew.c	\
 		ft_lstadd_back.c	\
@@ -84,10 +85,10 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	$(RM) -r $(OBJS) $(OBJSB)
+	$(RM) -r $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME) $(OBJSB)
+	$(RM) $(NAME)
 
 re: fclean all
 

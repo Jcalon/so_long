@@ -6,7 +6,7 @@
 /*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:33:16 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/05 12:46:17 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/05 19:45:46 by jcalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ typedef struct s_img
 	void	*ltcorner;
 	void	*lbcorner;
 	void	*rbcorner;
+	void	*bad_up;
+	void	*bad_down;
+	void	*bad_left;
+	void	*bad_right;
 }				t_img;
 
 typedef struct s_map
@@ -78,6 +82,9 @@ void	parse_map(t_data *data, char **argv, int argc);
 void	ft_put_background(t_data *data);
 void	ft_put_map(t_data *data);
 void	ft_move(t_data *data, char p, int dir);
-void	ft_bonhomme_anim(t_data *data);
+void	ft_coin_anim(t_data *data);
+void	ft_home(t_data *data);
+int		ft_end(t_data *data);
+void	ft_put_bottom(t_data *data);
 
 #endif
