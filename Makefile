@@ -3,20 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+         #
+#    By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 16:18:43 by jcalon            #+#    #+#              #
-#    Updated: 2022/06/05 18:43:26 by jcalon           ###   ########.fr        #
+#    Updated: 2022/06/06 23:43:18 by crazyd           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 
-SRCS 	= srcs/main.c srcs/set_up.c srcs/parsing.c srcs/put_map.c srcs/move.c
+SRCS 	= srcs/main.c srcs/set_up.c srcs/parsing.c srcs/put_map.c srcs/bonhomme_moves.c srcs/mechant_moves.c srcs/animations.c srcs/put_stuff.c srcs/error.c
+
 OBJS 	= ${SRCS:.c=.o}
 
 CC 		= gcc
-CFLAGS 	= -Wall -Wextra -Werror -fsanitize=address -O0 -g3
+CFLAGS 	= -Wall -Wextra -Werror
 
 INCLUDES = -I mlx_linux -I libft -I includes -I /usr/include
 

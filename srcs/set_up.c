@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_up.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:23:32 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/05 20:01:39 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/06 23:42:19 by crazyd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ static int	ft_lines(int fd, int x)
 		lines = get_next_line(fd);
 		if (!lines)
 			break ;
-		if ((int)ft_strlen(lines) < x / IMG_W
-			|| ((int)ft_strlen(lines) == 1 && *lines != '\n'))
+		if ((lines[ft_strlen(lines) - 1] == '\n'
+				&& (int)ft_strlen(lines) != x + 1)
+			|| (lines[ft_strlen(lines) - 1] != '\n'
+				&& (int)ft_strlen(lines) != x))
 		{
 			free(lines);
+			ft_printf("Map dimension error\n");
 			exit(EXIT_FAILURE);
 		}
 		else
@@ -46,17 +49,15 @@ void	ft_win_dim(t_data *data, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		exit(EXIT_FAILURE);
-	rbytes = 1;
+		ft_perror("Open map error");
+	rbytes = read(fd, buffer, 1);
+	buffer[rbytes] = '\0';
 	data->size_x = 0;
-	while (rbytes == 1)
+	while (rbytes == 1 && buffer[0] != '\n')
 	{
+		data->size_x += 1;
 		rbytes = read(fd, buffer, 1);
-		buffer[1] = '\0';
-		if (buffer[0] != '\n' && rbytes == 1)
-			data->size_x += 1;
-		else
-			break ;
+		buffer[rbytes] = '\0';
 	}
 	data->size_y = ft_lines(fd, data->size_x) + 3;
 	data->size_y *= IMG_H;
@@ -125,7 +126,10 @@ void	struct_init(t_data *data, t_map *map)
 
 	img = malloc(sizeof(t_img));
 	if (!img)
-		exit (EXIT_FAILURE);
+	{
+		mlx_destroy_display(data->mlx);
+		ft_perror("Malloc error");
+	}
 	data->map = map;
 	data->img = img;
 	data->counter = 0;

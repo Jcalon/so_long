@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:33:16 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/05 19:45:46 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/06 23:29:28 by crazyd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,25 @@ typedef struct s_data
 
 void	ft_win_dim(t_data *data, char **argv);
 void	struct_init(t_data *data, t_map *map);
-void	parse_map(t_data *data, char **argv, int argc);
-void	ft_put_background(t_data *data);
+void	parse_map(t_data *data, char **argv);
+
+void	ft_put_stuff(t_data *data);
 void	ft_put_map(t_data *data);
+void	ft_put_bottom(t_data *data);
+
 void	ft_move(t_data *data, char p, int dir);
 void	ft_coin_anim(t_data *data);
 void	ft_home(t_data *data);
-int		ft_end(t_data *data);
-void	ft_put_bottom(t_data *data);
+
+void	ft_move_mechant_horizontal(t_data *data);
+void	ft_move_mechant_vertical(t_data *data);
+int		go_right(t_data *data, int x, int y);
+int		go_left(t_data *data, int x, int y);
+int		go_front(t_data *data, int x, int y);
+int		go_back(t_data *data, int x, int y);
+
+int		ft_end(t_data *data, int win, char *str);
+void	ft_perror(char *str);
+int		ft_close(t_data *data);
 
 #endif
