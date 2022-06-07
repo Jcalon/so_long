@@ -6,11 +6,11 @@
 /*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:32:28 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/07 12:38:04 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/07 13:47:46 by jcalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	basic_error(char *str)
 {

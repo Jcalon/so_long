@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_map_bonus.c                                    :+:      :+:    :+:   */
+/*   put_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:15:09 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/07 12:34:15 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/07 13:44:48 by jcalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,6 @@ static void	ft_fill_map(t_data *data, int x, int y)
 			x * IMG_W, y * IMG_H);
 	else if (data->map->map[y][x] == 'E')
 		mlx_put_image_to_window(data->mlx, data->win, data->map->home,
-			x * IMG_W, y * IMG_H);
-	else if (data->map->map[y][x] == 'V')
-		mlx_put_image_to_window(data->mlx, data->win, data->img->bad_up,
-			x * IMG_W, y * IMG_H);
-	else if (data->map->map[y][x] == 'H')
-		mlx_put_image_to_window(data->mlx, data->win, data->img->bad_right,
 			x * IMG_W, y * IMG_H);
 }
 

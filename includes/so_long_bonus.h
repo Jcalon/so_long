@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:33:16 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/07 13:44:17 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/07 13:43:36 by jcalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "libft.h"
 # include "mlx.h"
@@ -44,6 +44,10 @@ typedef struct s_img
 	void	*ltcorner;
 	void	*lbcorner;
 	void	*rbcorner;
+	void	*bad_up;
+	void	*bad_down;
+	void	*bad_left;
+	void	*bad_right;
 }				t_img;
 
 typedef struct s_map
@@ -66,6 +70,7 @@ typedef struct s_data
 	int		p_x;
 	int		p_y;
 	int		counter;
+	int		animations;
 	int		collected;
 	t_map	*map;
 	t_img	*img;
@@ -77,9 +82,14 @@ void	parse_map(t_data *data, char **argv);
 
 void	ft_put_stuff(t_data *data);
 void	ft_put_map(t_data *data);
+void	ft_put_bottom(t_data *data);
 
 void	ft_move(t_data *data, char p, int dir);
+void	ft_coin_anim(t_data *data);
+void	ft_home(t_data *data);
 
+void	ft_move_mechant_horizontal(t_data *data);
+void	ft_move_mechant_vertical(t_data *data);
 int		go_right(t_data *data, int x, int y);
 int		go_left(t_data *data, int x, int y);
 int		go_front(t_data *data, int x, int y);
