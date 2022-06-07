@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_map_bonus.c                                    :+:      :+:    :+:   */
+/*   put_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:15:09 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/07 12:34:15 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/06 20:47:26 by crazyd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,40 @@ static void	ft_put_bonhomme(t_data *data)
 		data->img->player_up, data->p_x * IMG_W, data->p_y * IMG_H);
 }
 
+void	ft_put_bottom(t_data *data)
+{
+	int	x;
+
+	x = 0;
+	while (x < data->size_x)
+	{
+		mlx_put_image_to_window(data->mlx, data->win, data->img->bottom,
+			x, data->size_y - IMG_H);
+		x += IMG_W;
+	}
+	x = 0;
+	while (x < data->size_x)
+	{
+		mlx_put_image_to_window(data->mlx, data->win, data->img->background,
+			x, data->size_y - (2 * IMG_H));
+		x += IMG_W;
+	}
+	x = 0;
+	while (x < data->size_x)
+	{
+		mlx_put_image_to_window(data->mlx, data->win, data->img->top,
+			x, data->size_y - (3 * IMG_H));
+		x += IMG_W;
+	}
+}
+
 static void	ft_put_background(t_data *data)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (y < data->size_y)
+	while (y < data->size_y - 3)
 	{
 		x = 0;
 		while (x < data->size_x)
@@ -64,7 +91,8 @@ void	ft_put_map(t_data *data)
 	data->map->x = 0;
 	data->map->y = 0;
 	ft_put_background(data);
-	while (data->map->y < ((data->size_y) / IMG_H))
+	ft_put_bottom(data);
+	while (data->map->y < ((data->size_y - 3) / IMG_H) - 2)
 	{
 		ft_fill_map(data, data->map->x, data->map->y);
 		if (data->map->x < (data->size_x / IMG_W))

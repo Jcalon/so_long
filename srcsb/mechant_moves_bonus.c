@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mechant_mooves.c                                   :+:      :+:    :+:   */
+/*   mechant_moves.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:11:27 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/06 20:17:26 by crazyd           ###   ########.fr       */
+/*   Updated: 2022/06/07 10:27:38 by jcalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	go_right(t_data *data, int x, int y)
 			&& data->map->map[y][x + 1] != 'E'
 			&& data->map->map[y][x + 1] != 'C'
 			&& data->map->map[y][x + 1] != 'V'
-			&& data->map->map[y + 1][x] != 'H'
-			&& data->animations <= 500)
+			&& data->map->map[y][x + 1] != 'H')
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->img->background, x * IMG_W, y * IMG_W);
@@ -38,8 +37,7 @@ int	go_left(t_data *data, int x, int y)
 			&& data->map->map[y][x - 1] != 'E'
 			&& data->map->map[y][x - 1] != 'C'
 			&& data->map->map[y][x - 1] != 'V'
-			&& data->map->map[y + 1][x] != 'H'
-			&& data->animations <= 1000)
+			&& data->map->map[y][x - 1] != 'H')
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->img->background, x * IMG_W, y * IMG_W);
@@ -58,8 +56,7 @@ int	go_front(t_data *data, int x, int y)
 			&& data->map->map[y + 1][x] != 'E'
 			&& data->map->map[y + 1][x] != 'C'
 			&& data->map->map[y + 1][x] != 'V'
-			&& data->map->map[y + 1][x] != 'H'
-			&& data->animations <= 500)
+			&& data->map->map[y + 1][x] != 'H')
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->img->background, x * IMG_W, y * IMG_W);
@@ -79,8 +76,7 @@ int	go_back(t_data *data, int x, int y)
 			&& data->map->map[y - 1][x] != 'E'
 			&& data->map->map[y - 1][x] != 'C'
 			&& data->map->map[y - 1][x] != 'H'
-			&& data->map->map[y - 1][x] != 'V'
-			&& data->animations <= 1000)
+			&& data->map->map[y - 1][x] != 'V')
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->img->background, x * IMG_W, y * IMG_W);

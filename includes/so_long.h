@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:33:16 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/06 23:29:28 by crazyd           ###   ########.fr       */
+/*   Updated: 2022/06/07 11:55:30 by jcalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include "mlx.h"
-#include <fcntl.h>
+# include <fcntl.h>
 
 # define IMG_W 40
 # define IMG_H 40

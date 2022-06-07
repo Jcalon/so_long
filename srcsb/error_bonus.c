@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_bonus.c                                      :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:08:20 by crazyd            #+#    #+#             */
-/*   Updated: 2022/06/07 12:25:36 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/06 22:09:56 by crazyd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ static void	ft_destroy_img(t_data *data)
 	mlx_destroy_image(data->mlx, data->img->player_left);
 	mlx_destroy_image(data->mlx, data->img->player_right);
 	mlx_destroy_image(data->mlx, data->img->player_up);
+	mlx_destroy_image(data->mlx, data->img->bad_down);
+	mlx_destroy_image(data->mlx, data->img->bad_left);
+	mlx_destroy_image(data->mlx, data->img->bad_right);
+	mlx_destroy_image(data->mlx, data->img->bad_up);
 	mlx_destroy_image(data->mlx, data->img->left);
 	mlx_destroy_image(data->mlx, data->img->top);
 	mlx_destroy_image(data->mlx, data->img->bottom);

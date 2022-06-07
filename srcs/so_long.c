@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:32:28 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/06 23:37:54 by crazyd           ###   ########.fr       */
+/*   Updated: 2022/06/07 12:16:52 by jcalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,11 @@ static int	ft_key(int keycode, t_data *data)
 	return (0);
 }
 
-static int	animations(t_data *data)
-{
-	if (data->animations >= 1000)
-		data->animations = 0;
-	data->animations++;
-	if (data->collected != data->map->money)
-		ft_coin_anim(data);
-	else
-		ft_home(data);
-	if (data->map->map[data->p_y][data->p_x] == 'H'
-		|| data->map->map[data->p_y][data->p_x] == 'V')
-		ft_end(data, 2, "GAME OVER, you died...");
-	return (0);
-}
-
 static void	ft_render_next_frame(t_data *data)
 {
 	ft_put_map(data);
 	mlx_hook(data->win, 17, 1L << 2, ft_close, data);
 	mlx_hook(data->win, 02, 1L << 0, ft_key, data);
-	mlx_loop_hook(data->mlx, animations, data);
 }
 
 int	main(int argc, char *argv[])

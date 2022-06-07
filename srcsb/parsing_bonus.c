@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_bonus.c                                    :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:17:36 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/07 12:20:43 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/06 23:44:52 by crazyd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	check_map(t_data *data)
 				ep[0]++;
 			if (data->map->map[y][x] == 'P')
 				ep[1]++;
-			if (ft_cmp(data->map->map[y][x], "CEP01") == 1)
+			if (ft_cmp(data->map->map[y][x], "CEP01HV") == 1)
 				ft_end(data, 2, "Map error : Invalid letter");
 			x++;
 		}
@@ -68,7 +68,7 @@ static void	check_borders(t_data *data)
 				ft_end(data, 2, "Map error : Border");
 			else if (data->map->map[y][(data->size_x / IMG_W) - 1] != '1')
 				ft_end(data, 2, "Map error : Border");
-			else if (data->map->map[(data->size_y / IMG_H) - 1][x] != '1')
+			else if (data->map->map[(data->size_y / IMG_H) - 4][x] != '1')
 				ft_end(data, 2, "Map error : Border");
 			else
 				x++;

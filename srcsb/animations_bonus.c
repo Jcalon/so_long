@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 20:01:54 by crazyd            #+#    #+#             */
-/*   Updated: 2022/06/06 21:00:19 by crazyd           ###   ########.fr       */
+/*   Updated: 2022/06/07 11:53:06 by jcalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ void	ft_move_mechant_horizontal(t_data *data)
 	y = 0;
 	while (y < (data->size_y / IMG_H) - 3)
 	{
-		if (go_right(data, x, y) == 1)
-			break ;
-		else if (go_left(data, x, y) == 1)
-			break ;
+		if (data->animations <= 500)
+		{
+			if (go_right(data, x, y) == 1)
+				x++;
+		}
+		else if (data->animations > 500 && data->animations <= 1000)
+			go_left(data, x, y);
 		if (x < (data->size_x / IMG_W))
 			x++;
 		else
@@ -44,10 +47,13 @@ void	ft_move_mechant_vertical(t_data *data)
 	y = 0;
 	while (y < (data->size_y / IMG_H) - 3)
 	{
-		if (go_front(data, x, y) == 1)
-			break ;
-		else if (go_back(data, x, y) == 1)
-			break ;
+		if (data->animations <= 500)
+		{
+			if (go_front(data, x, y) == 1)
+				y++;
+		}
+		else if (data->animations > 500 && data->animations <= 1000)
+			go_back(data, x, y);
 		if (x < (data->size_x / IMG_W))
 			x++;
 		else

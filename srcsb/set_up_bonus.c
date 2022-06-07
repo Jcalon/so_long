@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_up_bonus.c                                     :+:      :+:    :+:   */
+/*   set_up.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcalon <jcalon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crazyd <crazyd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:23:32 by jcalon            #+#    #+#             */
-/*   Updated: 2022/06/07 12:18:09 by jcalon           ###   ########.fr       */
+/*   Updated: 2022/06/06 23:42:19 by crazyd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_win_dim(t_data *data, char **argv)
 		rbytes = read(fd, buffer, 1);
 		buffer[rbytes] = '\0';
 	}
-	data->size_y = ft_lines(fd, data->size_x);
+	data->size_y = ft_lines(fd, data->size_x) + 3;
 	data->size_y *= IMG_H;
 	data->size_x *= IMG_W;
 	close(fd);
@@ -82,6 +82,14 @@ static void	set_more_textures(t_data *data)
 			"./textures/ground.xpm", &img_w, &img_h);
 	data->img->top = mlx_xpm_file_to_image(data->mlx,
 			"./textures/topvoid.xpm", &img_w, &img_h);
+	data->img->bad_up = mlx_xpm_file_to_image(data->mlx,
+			"./textures/mechantfront.xpm", &img_w, &img_h);
+	data->img->bad_down = mlx_xpm_file_to_image(data->mlx,
+			"./textures/mechantback.xpm", &img_w, &img_h);
+	data->img->bad_left = mlx_xpm_file_to_image(data->mlx,
+			"./textures/mechantleft.xpm", &img_w, &img_h);
+	data->img->bad_right = mlx_xpm_file_to_image(data->mlx,
+			"./textures/mechantright.xpm", &img_w, &img_h);
 }
 
 static void	set_textures(t_data *data)
@@ -125,6 +133,7 @@ void	struct_init(t_data *data, t_map *map)
 	data->map = map;
 	data->img = img;
 	data->counter = 0;
+	data->animations = 0;
 	data->collected = 0;
 	data->map->money = 0;
 	set_textures(data);
