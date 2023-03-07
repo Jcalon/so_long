@@ -24,7 +24,12 @@ $> ./so_long_bonus maps/map_standard_bonus.ber
 ```
 
 ### Controls
-WASD
+| KEY           | Action        |
+| ------------- |:-------------:|
+| `W`           | move forward  |
+| `A`           | move left     |
+| `S`           | move backward |
+| `D`           | move right    |
 
 ### My ugly game (yes, I made the textures myself...)
 
